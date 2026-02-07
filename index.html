@@ -59,17 +59,16 @@
       max-width: 1200px;
       margin: 0 auto;
       padding: 72px 8vw 96px;
-      display: grid;
-      grid-template-columns: minmax(240px, 360px) minmax(0, 1fr);
-      gap: 56px;
-      align-items: start;
+      display: flex;
+      flex-direction: column;
+      gap: 40px;
+      align-items: stretch;
     }
 
     .intro {
-      position: sticky;
-      top: 64px;
       display: grid;
       gap: 20px;
+      max-width: 720px;
     }
 
     .title {
@@ -167,16 +166,6 @@
       transform: scale(1.04);
     }
 
-    @media (max-width: 900px) {
-      main {
-        grid-template-columns: 1fr;
-      }
-
-      .intro {
-        position: static;
-      }
-    }
-
     @media (max-width: 720px) {
       .photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -196,10 +185,16 @@
       <h1 class="title">Ben Bashioum</h1>
       <p class="subtitle">Jack of all trades, master of none</p>
       <p class="note">
-          This website is the product of hours of procrastination.
+        A minimal archive of moments &mdash; grouped by when the shutter clicked.
+        Northern Nevada leads the collection with full-frame shots from the desert, ranches, and roadside.
       </p>
     </section>
-    
+
+  <div class="content">
+    <h1> What are you doing here?</h1></h1>
+    <p>This is my site.</p>
+  </div>
+
     <section class="gallery">
       <div class="group">
         <div class="group-header">
@@ -208,7 +203,7 @@
         </div>
         <div class="photo-grid">
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-01.JPG" alt="Barbed wire foreground with mountains and open sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <img src="images/northern-nevada/nn-01.jpg" alt="Barbed wire foreground with mountains and open sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
             <figcaption>Fence line</figcaption>
           </figure>
           <figure class="photo-card">
