@@ -2,7 +2,7 @@
 
 Add the following images to this folder to populate the gallery:
 
-- nn-01.jpg
+- images/nn-01.JPG
 - nn-02.jpg
 - nn-03.jpg
 - nn-04.jpg
