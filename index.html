@@ -166,6 +166,75 @@
       transform: scale(1.04);
     }
 
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(5, 5, 5, 0.85);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 32px 6vw;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.2s ease;
+      z-index: 10;
+    }
+
+    .lightbox.is-active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .lightbox-content {
+      max-width: 1100px;
+      width: min(100%, 1100px);
+      display: grid;
+      gap: 16px;
+    }
+
+    .lightbox img {
+      width: 100%;
+      max-height: 78vh;
+      object-fit: contain;
+      border-radius: 18px;
+      background: #0c0c0c;
+    }
+
+    .lightbox-caption {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      text-align: center;
+    }
+
+    .lightbox-close {
+      position: absolute;
+      top: 24px;
+      right: 28px;
+      border: none;
+      background: rgba(255, 255, 255, 0.1);
+      color: var(--text-primary);
+      font-size: 1.5rem;
+      line-height: 1;
+      width: 44px;
+      height: 44px;
+      border-radius: 999px;
+      cursor: pointer;
+    }
+
+    .photo-button {
+      border: none;
+      padding: 0;
+      background: transparent;
+      cursor: zoom-in;
+      display: grid;
+    }
+
+    .photo-button:focus-visible {
+      outline: 2px solid rgba(255, 255, 255, 0.8);
+      outline-offset: 4px;
+      border-radius: 16px;
+    }
+
     @media (max-width: 720px) {
       .photo-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -183,9 +252,9 @@
   <main>
     <section class="intro">
       <h1 class="title">Ben Bashioum</h1>
-      <p class="subtitle">Jack of all trades, master of none.</p>
+      <p class="subtitle">Jack of all trades, master of none</p>
       <p class="note">
-        This website is the product of procrastination.
+        This website is the product of severe procrastination.
       </p>
     </section>
 
@@ -197,60 +266,144 @@
         </div>
         <div class="photo-grid">
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-01.JPG" alt="Barbed wire foreground with mountains and open sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-01.JPG" data-caption="Fence line">
+              <img src="images/northern-nevada/nn-01.JPG" alt="Barbed wire foreground with mountains and open sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Fence line</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-02.JPG" alt="Dusty playa with work trucks and a pale blue sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-02.JPG" data-caption="Playa shift">
+              <img src="images/northern-nevada/nn-02.JPG" alt="Dusty playa with work trucks and a pale blue sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Playa shift</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-03.JPG" alt="Desert floor with scrub brush and distant mountains." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-03.JPG" data-caption="Desert brush">
+              <img src="images/northern-nevada/nn-03.JPG" alt="Desert floor with scrub brush and distant mountains." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Desert brush</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-04.JPG" alt="Warm cabin interior with a door and window light." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-04.JPG" data-caption="Cabin glow">
+              <img src="images/northern-nevada/nn-04.JPG" alt="Warm cabin interior with a door and window light." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Cabin glow</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-05.JPG" alt="Wide open desert with mountain silhouettes under deep sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-05.JPG" data-caption="Open basin">
+              <img src="images/northern-nevada/nn-05.JPG" alt="Wide open desert with mountain silhouettes under deep sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Open basin</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-06.JPG" alt="Industrial equipment on the playa beneath a wide sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-06.JPG" data-caption="Field tower">
+              <img src="images/northern-nevada/nn-06.JPG" alt="Industrial equipment on the playa beneath a wide sky." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Field tower</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-07.JPG" alt="Shipping container building under the midday sun." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-07.JPG" data-caption="Container side">
+              <img src="images/northern-nevada/nn-07.JPG" alt="Shipping container building under the midday sun." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Container side</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-08.JPG" alt="Utility poles and a small shed along a rural road." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-08.JPG" data-caption="Utility yard">
+              <img src="images/northern-nevada/nn-08.JPG" alt="Utility poles and a small shed along a rural road." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Utility yard</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-09.JPG" alt="Rural road with power lines and low desert vegetation." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-09.JPG" data-caption="Roadside">
+              <img src="images/northern-nevada/nn-09.JPG" alt="Rural road with power lines and low desert vegetation." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Roadside</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-10.JPG" alt="Front view of a vintage red off-road vehicle." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-10.JPG" data-caption="Red rig">
+              <img src="images/northern-nevada/nn-10.JPG" alt="Front view of a vintage red off-road vehicle." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Red rig</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-11.JPG" alt="Rail line and power poles cutting across the desert." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-11.JPG" data-caption="Rail stretch">
+              <img src="images/northern-nevada/nn-11.JPG" alt="Rail line and power poles cutting across the desert." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Rail stretch</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-12.JPG" alt="Close-up of barbed wire on a weathered fence post." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-12.JPG" data-caption="Weathered wire">
+              <img src="images/northern-nevada/nn-12.JPG" alt="Close-up of barbed wire on a weathered fence post." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Weathered wire</figcaption>
           </figure>
           <figure class="photo-card">
-            <img src="images/northern-nevada/nn-13.JPG" alt="Shipping container with doors in a desert camp." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            <button class="photo-button" type="button" data-photo="images/northern-nevada/nn-13.JPG" data-caption="Desert quarters">
+              <img src="images/northern-nevada/nn-13.JPG" alt="Shipping container with doors in a desert camp." loading="lazy" onerror="this.onerror=null;this.src='IMG_7148.JPG';">
+            </button>
             <figcaption>Desert quarters</figcaption>
           </figure>
         </div>
       </div>
     </section>
   </main>
+
+  <div class="content">
+    <h1> What are you doing here?</h1></h1>
+    <p>This is my site.</p>
+  <div class="lightbox" aria-hidden="true" role="dialog">
+    <button class="lightbox-close" type="button" aria-label="Close image">&times;</button>
+    <div class="lightbox-content">
+      <img src="" alt="" />
+      <p class="lightbox-caption"></p>
+    </div>
+  </div>
+
+  <script>
+    const lightbox = document.querySelector(".lightbox");
+    const lightboxImage = lightbox.querySelector("img");
+    const lightboxCaption = lightbox.querySelector(".lightbox-caption");
+    const closeButton = lightbox.querySelector(".lightbox-close");
+    const photoButtons = document.querySelectorAll(".photo-button");
+
+    const openLightbox = (button) => {
+      const photoSrc = button.getAttribute("data-photo");
+      const caption = button.getAttribute("data-caption") || "";
+      const image = button.querySelector("img");
+      const altText = image ? image.alt : caption;
+
+      lightboxImage.src = photoSrc;
+      lightboxImage.alt = altText || "Enlarged photo";
+      lightboxCaption.textContent = caption;
+      lightbox.classList.add("is-active");
+      lightbox.setAttribute("aria-hidden", "false");
+    };
+
+    const closeLightbox = () => {
+      lightbox.classList.remove("is-active");
+      lightbox.setAttribute("aria-hidden", "true");
+      lightboxImage.src = "";
+      lightboxImage.alt = "";
+      lightboxCaption.textContent = "";
+    };
+
+    photoButtons.forEach((button) => {
+      button.addEventListener("click", () => openLightbox(button));
+    });
+
+    closeButton.addEventListener("click", closeLightbox);
+
+    lightbox.addEventListener("click", (event) => {
+      if (event.target === lightbox) {
+        closeLightbox();
+      }
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape" && lightbox.classList.contains("is-active")) {
+        closeLightbox();
+      }
+    });
+  </script>
 </body>
 </html>
